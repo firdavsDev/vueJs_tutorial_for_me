@@ -1,11 +1,11 @@
 <template>
-  <div class="app">
+  <div class="app font-monospace">
     <div class="content">
 
       <AppInfo />
 
       <!-- searching  -->
-      <div class="searching">
+      <div class="searching-panel">
         <SearchPanel />
         <AppFilter />
       </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+
 import AppInfo from '@/components/app-info/AppInfo.vue'
 import SearchPanel from '@/components/search-panel/SearchPanel.vue'
 import AppFilter from '@/components/app-filter/AppFilter.vue'
@@ -34,6 +35,7 @@ export default {
 </script>
 
 <style scoped>
+
 .app{
   height: 100vh;
   color: #2c3e50;
@@ -47,7 +49,7 @@ export default {
   padding: 5rem 0;
 }
 
-.searching{
+.searching-panel{
   margin-top: 2rem;
   padding: 1.5rem;
   background-color: #fff;
