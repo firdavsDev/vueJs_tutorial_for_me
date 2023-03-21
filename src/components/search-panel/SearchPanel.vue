@@ -1,10 +1,21 @@
 <template>
-    <input type="text" class="form-control search-input" placeholder="Kinolarni qidirish">
+    <input type="text" class="form-control search-input" placeholder="Kinolarni qidirish" :value="search" @input="searchMovie">
 </template>
 
 <script scoped>
 export default {
-    name: "SearchPanel"
+    name: "SearchPanel",
+    data() {
+        return {
+            search: '',
+        }
+    },
+    methods: {
+        searchMovie(e) {
+            this.search = e.target.value;
+            this.$emit('searchMovie', this.search);
+        }
+    }
 }
 </script>
 

@@ -1,0 +1,30 @@
+: for v-bind
+@click: for v-on
+
+<script>
+import AddMovie from '@/components/app-movie/AddMovie.vue'
+export default {
+    data() {
+        return {
+            message: 'Hello World'
+        }
+    },
+    methods: {
+        changeMessage() {
+            this.message = 'Hello Vue'
+        },
+        this.$emit('add-movie', movie) // ona componentga data yuborish uchun
+    },
+    components: {
+        AddMovie
+    },
+    props: { // ona componentdan data qabul etish uchun
+        movie: {
+            type: Object,
+            required: true,
+        }
+    },
+}
+</script> is used to write JavaScript code.
+
+in form tag we use @submit.prevent for no refresh page
