@@ -4,7 +4,7 @@
         <form class="add-form d-flex" @submit.prevent>
             <input type="text" class="form-control new-movie-label" placeholder="Qanday kino?" :value="name" @input="name = $event.target.value" required>
             <input type="text" class="form-control new-movie-label" placeholder="Necha marotaba ko'rilgan" :value="views" @input="views = $event.target.value" required>
-            <button class="btn btn-outline-dark" type="submit" @click="onAddMovie">Qo'shish</button>
+            <PrimaryButton class="btn-outline-dark" type="submit" @click="onAddMovie">Qo'shish</PrimaryButton>
         </form>
     </div>
 </template>

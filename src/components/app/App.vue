@@ -1,17 +1,25 @@
 <template>
   <div class="app font-monospace">
+
     <div class="content">
 
       <AppInfo :allMovieCount="movies.length" :favoriteMovieCount="movies.filter(c => c.favorite).length" />
 
       <!-- searching  -->
       <div class="searching-panel">
-        <SearchPanel @searchMovie="searchMovie" />
-        <AppFilter />
+
+        <SearchPanel @searchMovie="set_search_word" />
+
+        <AppFilter @onfilter="set_filter" :filter_name="filter"/>
+
       </div>
-      <MovieList :movies="onSearchHandler(movies, searching_word)" @delete_movie="delete_movie" />
+
+      <MovieList :movies="onFilterHandler(search_Movie(movies), filter)" @delete_movie="delete_movie" />
+
       <AddMovie @addMovie="addMovie" />
+
     </div>
+
   </div>
 </template>
 
@@ -36,7 +44,7 @@ export default {
       movies: [
         {
           "id": 1,
-          "name": "The Shawshank Redemption",
+          "name": "Merlin",
           "views": 1000000,
           "like": true,
           "favorite": true,
@@ -44,14 +52,14 @@ export default {
         },
         {
           "id": 2,
-          "name": "The Shawshank Redemption",
+          "name": "Qirolik",
           "views": 1000000,
           "like": true,
           "favorite": true,
         },
         {
           "id": 3,
-          "name": "The Shawshank Redemption",
+          "name": "Spy Family",
           "views": 1000000,
           "like": false,
           "favorite": false,
@@ -67,6 +75,7 @@ export default {
         },
       ],
       searching_word: '',
+      filter: ''
     }
   },
   methods: {
@@ -77,18 +86,29 @@ export default {
       const index = this.movies.indexOf(movie);
       this.movies.splice(index, 1);
     },
-    searchMovie(arr, search) {
-      if (search.length !== 0) {
-        return this.movies = arr.filter(c => c.name.toLowerCase().includes(search.toLowerCase()));
-      }
-      return this.movies;
-
-    },
-    onSearchHandler(arr, searching_word) {
-      if (searching_word.length == 0) {
+    search_Movie(arr) {
+      if (this.searching_word.length == 0) {
         return arr;
       }
-      return arr.filter(c => c.name.toLowerCase().indexOf(searching_word.toLowerCase()) > -1);
+      return arr.filter(c => c.name.toLowerCase().includes(this.searching_word.toLowerCase()));
+
+    },
+    set_search_word(search) {
+      this.searching_word = search;
+
+    },
+    onFilterHandler(arr, filter) {
+      switch (filter) {
+      case 'popular':
+          return arr.filter(c => c.like);
+      case 'most_viewed':
+          return arr.filter(c => c.views > 4);
+        default:
+          return arr;
+      }
+    },
+    set_filter(filter) {
+      this.filter = filter;
     }
   }
 }
