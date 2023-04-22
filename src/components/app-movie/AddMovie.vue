@@ -37,10 +37,9 @@ export default {
     onAddMovie() {
       // check if input is empty
       if (this.name.trim() === '' || this.views.trim() === '') {
-        return alert("Iltimos, kino nomini va ko'rilgan marta sonini kiriting")
+        return alert("Iltimos, kino nomini va ko'rilgan sonini kiriting")
       }
       const newMovie = {
-        id: Date.now(),
         name: this.name,
         views: this.views,
         like: false,

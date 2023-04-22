@@ -1,5 +1,6 @@
 <template>
   <div class="btn-group">
+    
     <PrimaryButton
       v-for="btn in buttons"
       :key="btn.name"
@@ -15,13 +16,16 @@
 <script>
 export default {
   name: 'AppFilter',
+
   props: {
     filter_name: {
       type: String,
       required: true
     }
   },
+  
   data() {
+  
     var buttons = [
       {
         name: 'all',
@@ -36,16 +40,19 @@ export default {
         label: "Eng ko'p ko'rilgan kinolar"
       }
     ]
+  
+  
     return {
       buttons
     }
+  
   },
+  
   methods: {
     onfilter(filter) {
       this.$emit('onfilter', filter)
     }
   }
+
 }
 </script>
-
-<style></style>

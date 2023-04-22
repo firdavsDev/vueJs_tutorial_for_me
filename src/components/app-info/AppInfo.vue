@@ -8,11 +8,13 @@
 <script>
 export default {
   name: 'AppInfo',
+
   props: {
     allMovieCount: {
       type: Number,
       required: true
     },
+    
     favoriteMovieCount: {
       type: Number,
       required: true

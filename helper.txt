@@ -28,3 +28,13 @@ export default {
 </script> is used to write JavaScript code.
 
 in form tag we use @submit.prevent for no refresh page
+
+Life cycle:
+
+Mounting: when the component is created and added to the DOM
+Updating: when the component is updated
+Unmounting: when the component is removed from the DOM
+
+v-model: for two way data binding (input, textarea, select)
+For example: <input type="text" v-model="message"> and <textarea v-model="message"></textarea> here message is a data property in the component. 
+v-model is a shorthand for v-bind:value and v-on:input
